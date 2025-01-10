@@ -1,80 +1,75 @@
 import React from "react";
-// import googleReviewsLogo from "../assets/google-reviews-logo.png";
-import physiotherapyImage from "../assets/img.webp";
+import CountUp from "react-countup";
+import consultationImage from "../assets/img.webp";
+import { Button } from "@/components/ui/button"; // Adjust the path as needed
 
-const HeroSection = () => {
+const PsychotherapySection = () => {
   return (
-    <div className="bg-gray-50 p-6 md:p-12">
-      {/* Header Section */}
-      <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-        {/* Text Content */}
-        <div className="max-w-lg">
-          <h1 className="text-4xl font-bold text-gray-800">
-            The Physiotherapy Specialist
-          </h1>
-          <p className="mt-4 text-gray-600">
-            Pain Relief and Recovery with the best physiotherapy near you.
-            ReLiva has a team of experienced and expert physiotherapists to keep
-            you ahead.
-          </p>
-
-          {/* City Selector */}
-          <select className="mt-6 w-full max-w-xs px-4 py-2 border rounded-lg text-gray-700 bg-gray-100">
-            <option value="">Select City</option>
-            <option value="city1">City 1</option>
-            <option value="city2">City 2</option>
-          </select>
-
-          {/* Reviews */}
-          <div className="flex items-center mt-4">
-            {/* <img src={googleReviewsLogo} alt="Google Reviews" className="h-6" /> */}
-            <p className="ml-4 text-gray-800 font-semibold">
-              4.9/5 <span className="text-yellow-500 font-bold">★★★★★</span>{" "}
-              (5500+)
+    <section className="bg-white py-12">
+      {/* Container with subtle centering */}
+      <div className="max-w-[1600px] w-full mx-auto px-8">
+        <div className="flex flex-col-reverse md:flex-row items-center md:space-x-12">
+          {/* Text Section */}
+          <div className="md:w-1/2 text-center md:text-left mb-8 md:mb-0 md:pr-8">
+            <h1 className="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
+              Begin Your Journey to Emotional Well-being
+            </h1>
+            <p className="text-gray-600 mb-6">
+              Experience compassionate, evidence-based psychotherapy in a safe
+              and supportive environment. We specialize in helping individuals
+              overcome anxiety, depression, trauma, and relationship challenges
+              through personalized therapeutic approaches.
             </p>
+            <div className="flex justify-center md:justify-start space-x-4 mb-8">
+              <Button
+                variant="default"
+                size="default"
+                onClick={() => console.log("Book a Session clicked")}
+              >
+                Book a Session
+              </Button>
+              <Button
+                variant="outline"
+                size="default"
+                onClick={() => console.log("Our Approach clicked")}
+              >
+                Our Approach
+              </Button>
+            </div>
+            {/* Stats Section */}
+            <div className="mt-8 flex justify-around md:justify-between mx-auto max-w-md md:max-w-none">
+              <div>
+                <h3 className="text-3xl font-bold text-teal-500">
+                  <CountUp start={0} end={15} duration={2.5} />+
+                </h3>
+                <p className="text-gray-600">Years of Practice</p>
+              </div>
+              <div>
+                <h3 className="text-3xl font-bold text-teal-500">
+                  <CountUp start={0} end={1000} duration={2.5} />+
+                </h3>
+                <p className="text-gray-600">Lives Transformed</p>
+              </div>
+              <div>
+                <h3 className="text-3xl font-bold text-teal-500">
+                  <CountUp start={0} end={95} duration={2.5} />%
+                </h3>
+                <p className="text-gray-600">Client Satisfaction</p>
+              </div>
+            </div>
+          </div>
+          {/* Image Section */}
+          <div className="md:w-1/2 md:pl-8">
+            <img
+              src={consultationImage}
+              alt="Therapeutic consultation session"
+              className="rounded-lg w-full h-auto shadow-lg"
+            />
           </div>
         </div>
-
-        {/* Image Section */}
-        <div>
-          <img
-            src={physiotherapyImage}
-            alt="Physiotherapy"
-            className="rounded-lg shadow-md w-full max-w-md"
-          />
-        </div>
       </div>
-
-      {/* Cards Section */}
-      <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
-        {/* Card 1 */}
-
-        {/* Card 2 */}
-        <div className="p-6 bg-white rounded-lg shadow-md border">
-          <p className="text-sm text-green-600 font-semibold">
-            No Travel + Saves Time
-          </p>
-          <h3 className="text-lg font-bold mt-2">Physiotherapy at Home</h3>
-          <p className="mt-2 text-gray-600">
-            Recover with expert physiotherapy at home conveniently with a home
-            visit physiotherapist.
-          </p>
-        </div>
-
-        {/* Card 3 */}
-        <div className="p-6 bg-white rounded-lg shadow-md border">
-          <p className="text-sm text-green-600 font-semibold">
-            From Wherever You Are!
-          </p>
-          <h3 className="text-lg font-bold mt-2">Online Physiotherapy</h3>
-          <p className="mt-2 text-gray-600">
-            See a Physio online, so you need not come to a clinic! Tele
-            Physiotherapy which is Effective, Convenient & Safe.
-          </p>
-        </div>
-      </div>
-    </div>
+    </section>
   );
 };
 
-export default HeroSection;
+export default PsychotherapySection;

@@ -1,6 +1,7 @@
 import React from "react";
 // import Navbar from "../navBar/index.jsx";
 import Hero from "../hero/main.jsx";
+import Offerings from "../hero/offerings.jsx";
 
 // import Footer from "../Footer/index.jsx";
 
@@ -10,6 +11,7 @@ const Home = () => {
       {/* <Navbar /> */}
 
       <Hero />
+      <Offerings />
 
       {/* <Footer /> */}
     </div>
