@@ -1,16 +1,63 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import CountUp from "react-countup";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import consultationImage from "../assets/img.webp";
-import { Button } from "@/components/ui/button"; // Adjust the path as needed
+import { Button } from "@/components/ui/button";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const PsychotherapySection = () => {
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    const element = sectionRef.current;
+
+    const textElements = element.querySelectorAll(".fade-left");
+    const imageElements = element.querySelectorAll(".fade-right");
+
+    // Animate text from the left
+    gsap.fromTo(
+      textElements,
+      { opacity: 0, x: -400 }, // Start slightly from the left
+      {
+        opacity: 1,
+        x: 0, // Move to the original position
+        duration: 1,
+        stagger: 0.2,
+        scrollTrigger: {
+          trigger: element,
+          start: "top 80%", // Start animation when the section is 80% visible
+          end: "bottom 20%",
+          toggleActions: "play none none reverse",
+        },
+      }
+    );
+
+    // Animate image from the right
+    gsap.fromTo(
+      imageElements,
+      { opacity: 0, x: 400 }, // Start slightly from the right
+      {
+        opacity: 1,
+        x: 0, // Move to the original position
+        duration: 1,
+        scrollTrigger: {
+          trigger: element,
+          start: "top 80%", // Start animation when the section is 80% visible
+          end: "bottom 20%",
+          toggleActions: "play none none reverse",
+        },
+      }
+    );
+  }, []);
+
   return (
-    <section className="bg-white py-12">
-      {/* Container with subtle centering */}
+    <section ref={sectionRef} className="bg-white py-12">
       <div className="max-w-[1600px] w-full mx-auto px-8">
         <div className="flex flex-col-reverse md:flex-row items-center md:space-x-12">
           {/* Text Section */}
-          <div className="md:w-1/2 text-center md:text-left mb-8 md:mb-0 md:pr-8">
+          <div className="md:w-1/2 text-center md:text-left mb-8 md:mb-0 md:pr-8 fade-left">
             <h1 className="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
               Begin Your Journey to Emotional Well-being
             </h1>
@@ -36,21 +83,20 @@ const PsychotherapySection = () => {
                 Our Approach
               </Button>
             </div>
-            {/* Stats Section */}
             <div className="mt-8 flex justify-around md:justify-between mx-auto max-w-md md:max-w-none">
-              <div>
+              <div className="fade-left">
                 <h3 className="text-3xl font-bold text-teal-500">
                   <CountUp start={0} end={15} duration={2.5} />+
                 </h3>
                 <p className="text-gray-600">Years of Practice</p>
               </div>
-              <div>
+              <div className="fade-left">
                 <h3 className="text-3xl font-bold text-teal-500">
                   <CountUp start={0} end={1000} duration={2.5} />+
                 </h3>
                 <p className="text-gray-600">Lives Transformed</p>
               </div>
-              <div>
+              <div className="fade-left">
                 <h3 className="text-3xl font-bold text-teal-500">
                   <CountUp start={0} end={95} duration={2.5} />%
                 </h3>
@@ -59,7 +105,7 @@ const PsychotherapySection = () => {
             </div>
           </div>
           {/* Image Section */}
-          <div className="md:w-1/2 md:pl-8">
+          <div className="md:w-1/2 md:pl-8 fade-right">
             <img
               src={consultationImage}
               alt="Therapeutic consultation session"
