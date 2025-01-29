@@ -11,6 +11,9 @@ const ConsultationForm = () => {
     message: "",
   });
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState(null);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
@@ -18,11 +21,27 @@ const ConsultationForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
+    setIsSubmitting(true);
+
+    // Simulate API call
+    setTimeout(() => {
+      if (
+        formData.name &&
+        formData.email &&
+        formData.program &&
+        formData.date
+      ) {
+        console.log("Form submitted:", formData);
+        setError(null); // Reset error if successful
+      } else {
+        setError("Please fill all the required fields.");
+      }
+      setIsSubmitting(false);
+    }, 2000);
   };
 
   return (
-    <div className="min-h-screen bg-white flex justify-center items-center">
+    <div className="min-h-screen bg-gray-50 flex justify-center items-center py-8">
       <div className="bg-white rounded-lg shadow-lg p-8 max-w-3xl w-full">
         <h2 className="text-center text-3xl font-bold text-teal-600 mb-6">
           Book Your Free Consultation
@@ -31,6 +50,8 @@ const ConsultationForm = () => {
           Fill out the form below to schedule your free session with one of our
           expert doctors.
         </p>
+
+        {error && <div className="text-red-500 text-center mb-4">{error}</div>}
 
         <form onSubmit={handleSubmit}>
           {/* Row 1: Name and Email */}
@@ -150,9 +171,14 @@ const ConsultationForm = () => {
           {/* Submit Button */}
           <button
             type="submit"
-            className="w-full bg-teal-500 text-white py-3 rounded-lg font-semibold hover:bg-teal-600 transition"
+            disabled={isSubmitting}
+            className={`w-full py-3 rounded-lg font-semibold ${
+              isSubmitting
+                ? "bg-teal-300 text-white cursor-not-allowed"
+                : "bg-teal-500 text-white hover:bg-teal-600 transition"
+            }`}
           >
-            Submit Your Request
+            {isSubmitting ? "Submitting..." : "Submit Your Request"}
           </button>
         </form>
       </div>
