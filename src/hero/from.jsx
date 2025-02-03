@@ -46,10 +46,6 @@ const ConsultationForm = () => {
         <h2 className="text-center text-3xl font-bold text-teal-600 mb-6">
           Book Your Free Consultation
         </h2>
-        <p className="text-center text-gray-500 mb-8">
-          Fill out the form below to schedule your free session with one of our
-          expert doctors.
-        </p>
 
         {error && <div className="text-red-500 text-center mb-4">{error}</div>}
 
