@@ -32,7 +32,7 @@ const ConsultationForm = () => {
         formData.date
       ) {
         console.log("Form submitted:", formData);
-        setError(null); // Reset error if successful
+        setError(null); // Rese error if successful
       } else {
         setError("Please fill all the required fields.");
       }
