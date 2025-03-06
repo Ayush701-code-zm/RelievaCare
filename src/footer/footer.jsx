@@ -109,7 +109,7 @@ const FooterSection = () => {
                     to="/aboutus"
                     className="relative self-stretch font-sans font-normal text-gray-400 text-lg  tracking-normal"
                   >
-                    Our Story
+                    Our Stor
                   </Link>
                 </div>
 
