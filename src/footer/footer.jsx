@@ -51,7 +51,7 @@ const FooterSection = () => {
                       src={icon}
                     />
                     <div className="relative w-fit mt-[-1px] font-sans font-normal text-gray-700 text-lg  tracking-normal whitespace-nowrap">
-                      info@exyntra.com
+                      info@exyntra.co
                     </div>
                   </button>
                 </div>
